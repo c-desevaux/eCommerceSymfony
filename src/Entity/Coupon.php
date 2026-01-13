@@ -25,6 +25,7 @@ class Coupon
     #[ORM\Column]
     private ?int $discount = null;
 
+
     #[ORM\Column]
     private ?int $max_usage = null;
 
@@ -38,14 +39,14 @@ class Coupon
     private $created_at = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'coupons')]
+    #[ORM\ManyToOne(inversedBy: 'Coupon')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?couponType $coupon_type = null;
+    private ?CouponType $coupon_type = null;
 
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'coupon')]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'Coupon')]
     private Collection $orders;
 
     public function __construct()
@@ -142,12 +143,12 @@ class Coupon
         return $this;
     }
 
-    public function getCouponType(): ?couponType
+    public function getCouponType(): ?CouponType
     {
         return $this->coupon_type;
     }
 
-    public function setCouponType(?couponType $coupon_type): static
+    public function setCouponType(?CouponType $coupon_type): static
     {
         $this->coupon_type = $coupon_type;
 
