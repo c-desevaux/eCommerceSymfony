@@ -3,17 +3,39 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Inscription</h1>
+                {{ form_start(registrationForm) }}
+                {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.RGPDConsent) }}
+                <fieldset>
+                    <legend>Mon identité</legend>
+                    {{ form_row(registrationForm.lastname)}}
+                    {{ form_row(registrationForm.firstname)}}
+                    {{ form_row(registrationForm.email)}}
+                </fieldset>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <fieldset>
+                    <legend>Mes coordonnées</legend>
+                    {{ form_row(registrationForm.adress)}}
+                    {{ form_row(registrationForm.zipcode)}}
+
+                </fieldset>
+
+                
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                    {{ form_row(registrationForm.RGPDConsent) }}
+
+                    <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </section>
+
+    
 {% endblock %}
