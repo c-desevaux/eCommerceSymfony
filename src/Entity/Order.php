@@ -23,11 +23,11 @@ class Order
     private $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?coupon $coupon = null;
+    private ?Coupon $coupon = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     /**
      * @var Collection<int, OrderDetail>
@@ -69,24 +69,24 @@ class Order
         return $this;
     }
 
-    public function getCoupon(): ?coupon
+    public function getCoupon(): ?Coupon
     {
         return $this->coupon;
     }
 
-    public function setCoupon(?coupon $coupon): static
+    public function setCoupon(?Coupon $coupon): static
     {
         $this->coupon = $coupon;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
