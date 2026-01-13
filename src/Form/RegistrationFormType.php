@@ -19,11 +19,11 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, ['attr' => ['class' => 'form-control']])
-            ->add('lastname', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('firstname', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('adress', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('zipcode', TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('email', EmailType::class, ['attr' => ['class' => 'form-control'], 'label' => 'E-mail'])
+            ->add('lastname', TextType::class, ['attr' => ['class' => 'form-control'], 'label' => 'Nom'])
+            ->add('firstname', TextType::class, ['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
+            ->add('adress', TextType::class, ['attr' => ['class' => 'form-control'], 'label' => 'Adresse'])
+            ->add('zipcode', TextType::class, ['attr' => ['class' => 'form-control'], 'label' => 'Code postal'])
             ->add('RGPDConsent', CheckboxType::class, [
                                 'mapped' => false,
                 'constraints' => [
@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
-            ])
+            'label' => "J'accepte les RGPD"])
             ->add('plainPassword', PasswordType::class, [
                                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
