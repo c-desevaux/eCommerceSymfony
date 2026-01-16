@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
@@ -13,10 +12,8 @@ class UserFixtures extends Fixture
 {
     
 
-    public function __construct(private UserPasswordHasherInterface $passwordEncoder, private SluggerInterface $slugger)
+    public function __construct(private UserPasswordHasherInterface $passwordEncoder)
     {
-      
-
     }
 
     public function load(ObjectManager $manager): void
@@ -45,6 +42,7 @@ class UserFixtures extends Fixture
         }
 
         $manager->flush();
+       
     }
 
 
